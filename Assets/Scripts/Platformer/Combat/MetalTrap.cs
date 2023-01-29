@@ -65,6 +65,10 @@ namespace MakersWrath.Platformer.Combat
 
         private SaveableClock clock;
 
+        public bool IsPlayerTrapped() {
+            return trapState == TrapState.Captured;
+        }
+
         private void Awake() {
             clock = GetComponent<SaveableClock>();
         }

@@ -26,10 +26,15 @@ namespace MakersWrath.Saving
         {
             if (((loadTime == 0) && (loadCooldown != -1)) || (loadCooldown > Time.time - loadTime)) 
             {
+                Debug.Log("caought timed");
                 return;
             }
             base.Save();
             saveTime = Time.time;
+        }
+
+        public bool SaveReady() {
+            return !((loadTime == 0) && (loadCooldown != -1)) || (loadCooldown > Time.time - loadTime);
         }
 
         public override void Load()
@@ -40,6 +45,10 @@ namespace MakersWrath.Saving
             }
             base.Load();
             loadTime = Time.time;
+        }
+
+        public bool LoadReady() {
+            return !(!hasSaveState || ((saveExpiry != -1) && (saveExpiry < Time.time - saveTime)));
         }
 
     }

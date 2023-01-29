@@ -49,6 +49,7 @@ namespace MakersWrath.Stats
             if (isDead) return;
 
             isDead = true;
+            Destroy(gameObject);
         }
 
         private void Awake()

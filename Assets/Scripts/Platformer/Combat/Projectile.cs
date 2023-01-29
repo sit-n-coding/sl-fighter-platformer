@@ -50,7 +50,7 @@ namespace MakersWrath.Platformer.Combat {
         }
 
         public virtual void OnBecameInvisible() {
-            disabled = true;
+            EnableGameObject(false);
         }
 
 
@@ -92,21 +92,24 @@ namespace MakersWrath.Platformer.Combat {
             cb.enabled = enable;
             mRenderer.enabled = enable;
             rb.isKinematic = !enable;
+            disabled = !enable;
         }
 
         public virtual void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("Solid") || (collision.gameObject.CompareTag("SolidPlayerOnly") && ownerTag != "Enemy")) {
                 EnableGameObject(false);
-                disabled = true;
                 Instantiate(explosionEffect, transform.position, transform.rotation);
             }
             else if (!collision.gameObject.CompareTag(ownerTag) && collision.TryGetComponent(out Health opponentHealth)) {
                 opponentHealth.TakeDamage(GetDamage());
                 EnableGameObject(false);
-                disabled = true;
                 Instantiate(explosionEffect, transform.position, transform.rotation);
             }       
+        }
+
+        private void OnDestroy() {
+            EnableGameObject(false);
         }
     }
 }
