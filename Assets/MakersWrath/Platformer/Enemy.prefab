@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a453765973d0846a5792c01b705541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealthPoints: 300
+  initialHealthPoints: 400
   onDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -243,10 +243,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea251c3d0b6bb4aa59ba994ee17e1541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homingDistance: 16
-  bombDistance: 5
-  laserRange: 4
-  fireRate: 0.6
+  homingDistance: 11
+  bombDistance: 11
+  laserRange: 0
+  fireRate: 1.5
   stayAwayDistance: 14
   playerRadius: 6
   numProjectilesToSave: 2
